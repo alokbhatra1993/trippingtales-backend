@@ -1,4 +1,5 @@
 const Package = require("../models/package"); // Adjust the path as needed
+const mongoose = require('mongoose');
 
 // Function to add a new package
 exports.addPackage = async (req, res) => {
@@ -52,8 +53,11 @@ exports.addPackage = async (req, res) => {
 // Function to fetch all packages for a specific tour
 exports.fetchPackagesByTour = async (req, res) => {
     try {
-        const { tourId } = req.params; // Get tourId from URL parameters
-        const packages = await Package.find({ tourId }); // Find packages by tourId
+        const { tourId } = req.body; // Get tourId from URL parameters
+        console.log("req.body", req.body);
+        
+        const packages = await Package.find({ tourId: new mongoose.Types.ObjectId(tourId) });
+
         console.log("packages", packages);
         res.status(200).json(packages);
     } catch (error) {

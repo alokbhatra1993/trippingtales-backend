@@ -11,6 +11,7 @@ const userRoutes = require("./routes/user")
 
 const tourRoutes = require("./routes/tours");
 const packageRoutes = require("./routes/package");
+const emailRoutes = require('./routes/emailRoutes');
 
 const App = express();
 App.use(bodyParser.json());
@@ -26,6 +27,7 @@ App.get('/', (req, res) => {
 App.use("/User",userRoutes)
 App.use("/Tour",tourRoutes)
 App.use("/package",packageRoutes)
+App.use("/api/emailRoutes", emailRoutes);
 
 
 /*******Login Api*********/
