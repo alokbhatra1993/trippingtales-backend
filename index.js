@@ -19,10 +19,7 @@ App.use(cors());
 
 const port = 5005;
 
-app.use(cors({
-  origin: ['https://thetrippingtales.com/','https://trippingtales-backend.vercel.app/' ,'https://another-allowed-origin.com',],
-  optionsSuccessStatus: 200,
-}));
+
 // Hello World Route
 App.get('/', (req, res) => {
   res.send("Welcome tour APIS");
